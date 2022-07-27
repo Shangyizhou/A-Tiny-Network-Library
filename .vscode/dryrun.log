@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/shang/code/C++/github/my-muduo'
+make: Leaving directory '/home/shang/code/C++/github/my-muduo'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

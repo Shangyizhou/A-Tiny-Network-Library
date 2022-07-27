@@ -1,0 +1,216 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
+# GNU Make 4.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2014 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Wed Jul 20 00:57:48 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# default
+.SHELLFLAGS := -c
+# environment
+VSCODE_AGENT_FOLDER = /root/.vscode-server
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# default
+MAKE_VERSION := 4.1
+# makefile
+CURDIR := /home/shang/code/C++/github/my-muduo
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1d735750dbb1b9066c7513078396ba0f.zh-cn","_translationsConfigFile":"/root/.vscode-server/data/clp/1d735750dbb1b9066c7513078396ba0f.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1d735750dbb1b9066c7513078396ba0f.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1d735750dbb1b9066c7513078396ba0f.zh-cn/3b889b090b5ad5793f524b5d1d39fda662b96a2a","_corruptedFile":"/root/.vscode-server/data/clp/1d735750dbb1b9066c7513078396ba0f.zh-cn/corrupted.info","_languagePackSupport":true}
+# environment
+_ = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/node
+# makefile
+MAKEFILE_LIST := 
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/0/bus
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+VSCODE_CWD = /root
+# environment
+SSH_CONNECTION = 220.152.209.90 4764 172.19.38.237 22
+# environment
+PATH = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin
+# environment
+XDG_RUNTIME_DIR = /run/user/0
+# environment
+GOPATH = /root/go
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS = 
+# automatic
+%F = $(notdir $%)
+# environment
+PWD = /home/shang/code/C++/github/my-muduo
+# environment
+VSCODE_IPC_HOOK_CLI = /run/user/0/vscode-ipc-de4ead7c-4198-4443-8b77-3e5bcbde8bf4.sock
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /root
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+LOGNAME = root
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# automatic
++F = $(notdir $+)
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 3
+# environment
+XDG_SESSION_ID = 5
+# environment
+USER = root
+# makefile
+.DEFAULT_GOAL := 
+# environment
+GOROOT = /usr/local/go
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# environment
+SSH_CLIENT = 220.152.209.90 4764 22
+# environment
+MAIL = /var/mail/root
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+BROWSER = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/helpers/browser.sh
+# environment
+S_COLORS = auto
+# environment
+VSCODE_HANDLES_SIGPIPE = true
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# default
+.RECIPEPREFIX := 
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+LANG = C
+# variable set hash-table stats:
+# Load=66/1024=6%, Rehash=0, Collisions=8/88=9%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 64513, inode 1835207): 45 files, no impossibilities.
+
+# 45 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# files hash-table stats:
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 53 / storage = 617 B / avg = 11 B
+# current buf: size = 8162 B / used = 617 B / count = 53 / avg = 11 B
+
+# strcache performance: lookups = 56 / hit rate = 5%
+# hash-table stats:
+# Load=53/8192=1%, Rehash=0, Collisions=1/56=2%
+# Finished Make data base on Wed Jul 20 00:57:48 2022
+
+ 
