@@ -36,6 +36,8 @@ public:
 
     // 发送数据
     void send(const std::string &buf);
+    void send(Buffer *buf);
+
     // 关闭连接
     void shutdown();
 
@@ -74,6 +76,7 @@ private:
     void handleError();
 
     void sendInLoop(const void* message, size_t len);
+    void sendInLoop(const std::string& message);
     void shutdownInLoop();
     
     EventLoop *loop_;           // 属于哪个subLoop（如果是单线程则为mainLoop）

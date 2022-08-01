@@ -70,13 +70,38 @@ void TcpConnection::send(const std::string &buf)
         }
         else
         {
+            // 遇到重载函数的绑定，可以使用函数指针来指定确切的函数
+            void(TcpConnection::*fp)(const void* data, size_t len) = &TcpConnection::sendInLoop;
             loop_->runInLoop(std::bind(
-                &TcpConnection::sendInLoop,
+                fp,
                 this,
                 buf.c_str(),
                 buf.size()));
         }
     }
+}
+
+void TcpConnection::send(Buffer *buf)
+{
+    if (state_ == kConnected)
+    {
+        if (loop_->isInLoopThread())
+        {
+            sendInLoop(buf->peek(), buf->readableBytes());
+            buf->retrieveAll();
+        }
+        else
+        {
+            // sendInLoop有多重重载，需要使用函数指针确定
+            void (TcpConnection::*fp)(const std::string& message) = &TcpConnection::sendInLoop;
+            loop_->runInLoop(std::bind(fp, this, buf->retrieveAllAsString()));
+        }
+    }
+}
+
+void TcpConnection::sendInLoop(const std::string& message)
+{
+  sendInLoop(message.data(), message.size());
 }
 
 /**
@@ -201,6 +226,7 @@ void TcpConnection::handleRead(Timestamp receiveTime)
     LOG_DEBUG("%s:%s:%d, the fd = %d\n" , __FILE__, __FUNCTION__, __LINE__, this->channel_->fd());
 
     int savedErrno = 0;
+    // TcpConnection会从socket读取数据，然后写入inpuBuffer
     ssize_t n = inputBuffer_.readFd(channel_->fd(), &savedErrno);
     if (n > 0)
     {
@@ -232,13 +258,15 @@ void TcpConnection::handleWrite()
         if (n > 0)
         {
             outputBuffer_.retrieve(n);
+            // 说明buffer可读数据都被TcpConnection读取完毕并写入给了客户端
+            // 此时就可以关闭连接，否则还需继续提醒写事件
             if (outputBuffer_.readableBytes() == 0)
             {
                 channel_->disableWriting();
                 // 调用用户自定义的写完数据处理函数
                 if (writeCompleteCallback_)
                 {
-                    // 唤醒loop_对应得thread线程，执行回调
+                    // 唤醒loop_对应得thread线程，执行写完成事件回调
                     loop_->queueInLoop(std::bind(writeCompleteCallback_, shared_from_this()));
                 }
                 if (state_ == kDisconnecting)

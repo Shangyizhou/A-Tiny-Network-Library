@@ -5,6 +5,8 @@
 #include "Buffer.h"
 #include "Logger.h"
 
+const char Buffer::kCRLF[] = "\r\n";
+
 /**
  * 从fd上读取数据 Poller工作在LT模式
  * Buffer缓冲区是有大小的！ 但是从fd上读取数据的时候 却不知道tcp数据的最终大小
@@ -62,7 +64,7 @@ ssize_t Buffer::readFd(int fd, int *saveErrno)
 }
 
 // inputBuffer_.readFd表示将对端数据读到inputBuffer_中，移动writerIndex_指针
-// outputBuffer_.writeFd标示将数据写入到outputBuffer_中，从readerIndex_开始，可以写readableBytes()个字节
+// outputBuffer_.writeFd表示将数据写入到outputBuffer_中，从readerIndex_开始，可以写readableBytes()个字节
 ssize_t Buffer::writeFd(int fd, int *saveErrno)
 {
     ssize_t n = ::write(fd, peek(), readableBytes());

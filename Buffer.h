@@ -14,8 +14,11 @@
 class Buffer
 {
 public:
+    // prependable 初始大小，readIndex 初始位置
     static const size_t kCheapPrepend = 8;
-    static const size_t kInitialSize = 1024;
+    // writeable 初始大小，writeIndex 初始位置  
+    // 刚开始 readerIndex 和 writerIndex 处于同一位置
+    static const size_t kInitialSize = 1024;    
 
     explicit Buffer(size_t initialSize = kInitialSize)
         :   buffer_(kCheapPrepend + initialSize),
@@ -45,6 +48,11 @@ public:
         return begin() + readerIndex_;
     }
 
+    void retrieveUntil(const char *end)
+    {
+        retrieve(end - peek());
+    }
+    
     // onMessage string <- Buffer
     // 需要进行复位操作
     void retrieve(size_t len)
@@ -95,12 +103,30 @@ public:
         }
     }
 
+    // string::data() 转换成字符数组，但是没有 '\0'
+    void append(const std::string &str)
+    {
+        append(str.data(), str.size());
+    }
+
+    void append(const char *data)
+    {
+        append(data, sizeof(data));
+    }
+
     // 把[data, data+len]内存上的数据添加到缓冲区中
     void append(const char *data, size_t len)
     {
         ensureWritableBytes(len);
         std::copy(data, data+len, beginWrite());
         writerIndex_ += len;
+    }
+
+    const char* findCRLF() const
+    {
+      // FIXME: replace with memmem()?
+      const char* crlf = std::search(peek(), beginWrite(), kCRLF, kCRLF+2);
+      return crlf == beginWrite() ? NULL : crlf;
     }
 
     char* beginWrite()
@@ -137,11 +163,12 @@ private:
          * kCheapPrepend | reader | writer |
          * kCheapPrepend |       len         |
          */
+        // 整个buffer都不够用
         if (writableBytes() + prependableBytes() < len + kCheapPrepend)
         {
             buffer_.resize(writerIndex_ + len);
         }
-        else
+        else // 整个buffer够用，将后面移动到前面继续分配
         {
             size_t readable = readableBytes();
             std::copy(begin() + readerIndex_,
@@ -152,9 +179,14 @@ private:
         }
     }
 
+    /**
+     * 采取 vector 形式，可以自动分配内存
+     * 也可以提前预留空间大小、
+     */ 
     std::vector<char> buffer_;
     size_t readerIndex_;
     size_t writerIndex_;
+    static const char kCRLF[];
 };
 
 #endif // BUFFER_H

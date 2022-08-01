@@ -48,6 +48,12 @@ public:
     // 开启服务器监听
     void start();
     
+    EventLoop* getLoop() const { return loop_; }
+
+    const std::string name() { return name_; }
+
+    const std::string ipPort() { return ipPort_; }
+
 private:
     void newConnection(int sockfd, const InetAddress &peerAddr);
     void removeConnection(const TcpConnectionPtr &conn);

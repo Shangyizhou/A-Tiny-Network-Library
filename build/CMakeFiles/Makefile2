@@ -97,6 +97,42 @@ clean: CMakeFiles/mymuduo.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory mymuduo/base
+
+# Convenience name for "all" pass in the directory.
+mymuduo/base/all:
+
+.PHONY : mymuduo/base/all
+
+# Convenience name for "clean" pass in the directory.
+mymuduo/base/clean:
+
+.PHONY : mymuduo/base/clean
+
+# Convenience name for "preinstall" pass in the directory.
+mymuduo/base/preinstall:
+
+.PHONY : mymuduo/base/preinstall
+
+#=============================================================================
+# Directory level rules for directory mymuduo/net
+
+# Convenience name for "all" pass in the directory.
+mymuduo/net/all:
+
+.PHONY : mymuduo/net/all
+
+# Convenience name for "clean" pass in the directory.
+mymuduo/net/clean:
+
+.PHONY : mymuduo/net/clean
+
+# Convenience name for "preinstall" pass in the directory.
+mymuduo/net/preinstall:
+
+.PHONY : mymuduo/net/preinstall
+
+#=============================================================================
 # Special targets to cleanup operation of make.
 
 # Special rule to run CMake to check the build system integrity.

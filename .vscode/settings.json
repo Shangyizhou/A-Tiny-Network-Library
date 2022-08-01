@@ -45,7 +45,13 @@
         "ctime": "cpp",
         "mutex": "cpp",
         "ratio": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "bitset": "cpp",
+        "complex": "cpp",
+        "cstring": "cpp",
+        "list": "cpp",
+        "typeindex": "cpp",
+        "map": "cpp"
     },
     "cmake.configureOnOpen": true
 }

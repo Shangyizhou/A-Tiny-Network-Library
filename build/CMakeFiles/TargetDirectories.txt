@@ -1,3 +1,7 @@
 /home/shang/code/C++/github/my-muduo/build/CMakeFiles/rebuild_cache.dir
 /home/shang/code/C++/github/my-muduo/build/CMakeFiles/mymuduo.dir
 /home/shang/code/C++/github/my-muduo/build/CMakeFiles/edit_cache.dir
+/home/shang/code/C++/github/my-muduo/build/mymuduo/base/CMakeFiles/rebuild_cache.dir
+/home/shang/code/C++/github/my-muduo/build/mymuduo/base/CMakeFiles/edit_cache.dir
+/home/shang/code/C++/github/my-muduo/build/mymuduo/net/CMakeFiles/rebuild_cache.dir
+/home/shang/code/C++/github/my-muduo/build/mymuduo/net/CMakeFiles/edit_cache.dir

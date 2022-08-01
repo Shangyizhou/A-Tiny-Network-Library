@@ -1,0 +1,87 @@
+[
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/Acceptor.cc.o -c /home/shang/code/C++/github/my-muduo/Acceptor.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/Acceptor.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/Buffer.cc.o -c /home/shang/code/C++/github/my-muduo/Buffer.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/Buffer.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/Channel.cc.o -c /home/shang/code/C++/github/my-muduo/Channel.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/Channel.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/CurrentThread.cc.o -c /home/shang/code/C++/github/my-muduo/CurrentThread.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/CurrentThread.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/DefaultPoller.cc.o -c /home/shang/code/C++/github/my-muduo/DefaultPoller.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/DefaultPoller.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/EPollPoller.cc.o -c /home/shang/code/C++/github/my-muduo/EPollPoller.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/EPollPoller.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/EventLoop.cc.o -c /home/shang/code/C++/github/my-muduo/EventLoop.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/EventLoop.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/EventLoopThread.cc.o -c /home/shang/code/C++/github/my-muduo/EventLoopThread.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/EventLoopThread.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/EventLoopThreadPool.cc.o -c /home/shang/code/C++/github/my-muduo/EventLoopThreadPool.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/EventLoopThreadPool.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/InetAddress.cc.o -c /home/shang/code/C++/github/my-muduo/InetAddress.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/InetAddress.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/Logger.cc.o -c /home/shang/code/C++/github/my-muduo/Logger.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/Logger.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/Poller.cc.o -c /home/shang/code/C++/github/my-muduo/Poller.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/Poller.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/Socket.cc.o -c /home/shang/code/C++/github/my-muduo/Socket.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/Socket.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/TcpConnection.cc.o -c /home/shang/code/C++/github/my-muduo/TcpConnection.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/TcpConnection.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/TcpServer.cc.o -c /home/shang/code/C++/github/my-muduo/TcpServer.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/TcpServer.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/Thread.cc.o -c /home/shang/code/C++/github/my-muduo/Thread.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/Thread.cc"
+},
+{
+  "directory": "/home/shang/code/C++/github/my-muduo/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -Dmymuduo_EXPORTS  -g;-Wall;-std=c++11 -g -fPIC   -o CMakeFiles/mymuduo.dir/Timestamp.cc.o -c /home/shang/code/C++/github/my-muduo/Timestamp.cc",
+  "file": "/home/shang/code/C++/github/my-muduo/Timestamp.cc"
+}
+]

@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jul 20 00:57:48 2022
+# Make data base, printed on Mon Aug  1 23:18:17 2022
 
 # Variables
 
@@ -49,7 +49,7 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /root
 # environment
-SSH_CONNECTION = 220.152.209.90 4764 172.19.38.237 22
+SSH_CONNECTION = 123.98.26.67 6760 172.19.38.237 22
 # environment
 PATH = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin
 # environment
@@ -67,7 +67,7 @@ LS_COLORS =
 # environment
 PWD = /home/shang/code/C++/github/my-muduo
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/0/vscode-ipc-de4ead7c-4198-4443-8b77-3e5bcbde8bf4.sock
+VSCODE_IPC_HOOK_CLI = /run/user/0/vscode-ipc-cbe49e0c-1166-4090-a5ef-cc4760d9244e.sock
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -95,7 +95,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 3
 # environment
-XDG_SESSION_ID = 5
+XDG_SESSION_ID = 51
 # environment
 USER = root
 # makefile
@@ -115,7 +115,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 220.152.209.90 4764 22
+SSH_CLIENT = 123.98.26.67 6760 22
 # environment
 MAIL = /var/mail/root
 # automatic
@@ -153,9 +153,9 @@ LANG = C
 
 # Directories
 
-# . (device 64513, inode 1835207): 45 files, no impossibilities.
+# . (device 64513, inode 1835207): 48 files, no impossibilities.
 
-# 45 files, no impossibilities in 1 directories.
+# 48 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -205,12 +205,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 53 / storage = 617 B / avg = 11 B
-# current buf: size = 8162 B / used = 617 B / count = 53 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 56 / storage = 637 B / avg = 11 B
+# current buf: size = 8162 B / used = 637 B / count = 56 / avg = 11 B
 
-# strcache performance: lookups = 56 / hit rate = 5%
+# strcache performance: lookups = 59 / hit rate = 5%
 # hash-table stats:
-# Load=53/8192=1%, Rehash=0, Collisions=1/56=2%
-# Finished Make data base on Wed Jul 20 00:57:48 2022
+# Load=56/8192=1%, Rehash=0, Collisions=1/59=2%
+# Finished Make data base on Mon Aug  1 23:18:17 2022
 
  
