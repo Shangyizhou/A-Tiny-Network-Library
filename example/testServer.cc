@@ -1,7 +1,6 @@
+#include <mymuduo/net/TcpServer.h>
+#include <mymuduo/base/Logger.h>
 #include <string>
-
-#include <mymuduo/TcpServer.h>
-#include <mymuduo/Logger.h>
 
 class EchoServer
 {
@@ -20,6 +19,7 @@ public:
         // 设置合适的subloop线程数量
         // server_.setThreadNum(3);
     }
+
     void start()
     {
         server_.start();
@@ -54,7 +54,7 @@ private:
 
 int main() {
     EventLoop loop;
-    InetAddress addr(8002);
+    InetAddress addr(8001);
     EchoServer server(&loop, addr, "EchoServer");
     server.start();
     loop.loop();

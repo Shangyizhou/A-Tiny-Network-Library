@@ -56,16 +56,17 @@ CMAKE_BINARY_DIR = /home/shang/code/C++/github/my-muduo/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -77,6 +78,51 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -110,14 +156,154 @@ depend:
 	cd /home/shang/code/C++/github/my-muduo/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+mymuduo/base/CMakeFiles/mymuduo_base.dir/rule:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f CMakeFiles/Makefile2 mymuduo/base/CMakeFiles/mymuduo_base.dir/rule
+.PHONY : mymuduo/base/CMakeFiles/mymuduo_base.dir/rule
+
+# Convenience name for target.
+mymuduo_base: mymuduo/base/CMakeFiles/mymuduo_base.dir/rule
+
+.PHONY : mymuduo_base
+
+# fast build rule for target.
+mymuduo_base/fast:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/build
+.PHONY : mymuduo_base/fast
+
+CurrentThread.o: CurrentThread.cc.o
+
+.PHONY : CurrentThread.o
+
+# target to build an object file
+CurrentThread.cc.o:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/CurrentThread.cc.o
+.PHONY : CurrentThread.cc.o
+
+CurrentThread.i: CurrentThread.cc.i
+
+.PHONY : CurrentThread.i
+
+# target to preprocess a source file
+CurrentThread.cc.i:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/CurrentThread.cc.i
+.PHONY : CurrentThread.cc.i
+
+CurrentThread.s: CurrentThread.cc.s
+
+.PHONY : CurrentThread.s
+
+# target to generate assembly for a file
+CurrentThread.cc.s:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/CurrentThread.cc.s
+.PHONY : CurrentThread.cc.s
+
+Logger.o: Logger.cc.o
+
+.PHONY : Logger.o
+
+# target to build an object file
+Logger.cc.o:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/Logger.cc.o
+.PHONY : Logger.cc.o
+
+Logger.i: Logger.cc.i
+
+.PHONY : Logger.i
+
+# target to preprocess a source file
+Logger.cc.i:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/Logger.cc.i
+.PHONY : Logger.cc.i
+
+Logger.s: Logger.cc.s
+
+.PHONY : Logger.s
+
+# target to generate assembly for a file
+Logger.cc.s:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/Logger.cc.s
+.PHONY : Logger.cc.s
+
+Thread.o: Thread.cc.o
+
+.PHONY : Thread.o
+
+# target to build an object file
+Thread.cc.o:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/Thread.cc.o
+.PHONY : Thread.cc.o
+
+Thread.i: Thread.cc.i
+
+.PHONY : Thread.i
+
+# target to preprocess a source file
+Thread.cc.i:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/Thread.cc.i
+.PHONY : Thread.cc.i
+
+Thread.s: Thread.cc.s
+
+.PHONY : Thread.s
+
+# target to generate assembly for a file
+Thread.cc.s:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/Thread.cc.s
+.PHONY : Thread.cc.s
+
+Timestamp.o: Timestamp.cc.o
+
+.PHONY : Timestamp.o
+
+# target to build an object file
+Timestamp.cc.o:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/Timestamp.cc.o
+.PHONY : Timestamp.cc.o
+
+Timestamp.i: Timestamp.cc.i
+
+.PHONY : Timestamp.i
+
+# target to preprocess a source file
+Timestamp.cc.i:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/Timestamp.cc.i
+.PHONY : Timestamp.cc.i
+
+Timestamp.s: Timestamp.cc.s
+
+.PHONY : Timestamp.s
+
+# target to generate assembly for a file
+Timestamp.cc.s:
+	cd /home/shang/code/C++/github/my-muduo/build && $(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/Timestamp.cc.s
+.PHONY : Timestamp.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
+	@echo "... install/strip"
 	@echo "... edit_cache"
+	@echo "... mymuduo_base"
+	@echo "... rebuild_cache"
+	@echo "... list_install_components"
+	@echo "... install/local"
+	@echo "... install"
+	@echo "... CurrentThread.o"
+	@echo "... CurrentThread.i"
+	@echo "... CurrentThread.s"
+	@echo "... Logger.o"
+	@echo "... Logger.i"
+	@echo "... Logger.s"
+	@echo "... Thread.o"
+	@echo "... Thread.i"
+	@echo "... Thread.s"
+	@echo "... Timestamp.o"
+	@echo "... Timestamp.i"
+	@echo "... Timestamp.s"
 .PHONY : help
 
 

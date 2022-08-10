@@ -56,16 +56,51 @@ CMAKE_BINARY_DIR = /home/shang/code/C++/github/my-muduo/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
-.PHONY : rebuild_cache/fast
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -77,6 +112,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,476 +157,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mymuduo
+# Target rules for targets named mymuduo_base
 
 # Build rule for target.
-mymuduo: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mymuduo
-.PHONY : mymuduo
+mymuduo_base: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mymuduo_base
+.PHONY : mymuduo_base
 
 # fast build rule for target.
-mymuduo/fast:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/build
-.PHONY : mymuduo/fast
-
-Acceptor.o: Acceptor.cc.o
-
-.PHONY : Acceptor.o
-
-# target to build an object file
-Acceptor.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Acceptor.cc.o
-.PHONY : Acceptor.cc.o
-
-Acceptor.i: Acceptor.cc.i
-
-.PHONY : Acceptor.i
-
-# target to preprocess a source file
-Acceptor.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Acceptor.cc.i
-.PHONY : Acceptor.cc.i
-
-Acceptor.s: Acceptor.cc.s
-
-.PHONY : Acceptor.s
-
-# target to generate assembly for a file
-Acceptor.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Acceptor.cc.s
-.PHONY : Acceptor.cc.s
-
-Buffer.o: Buffer.cc.o
-
-.PHONY : Buffer.o
-
-# target to build an object file
-Buffer.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Buffer.cc.o
-.PHONY : Buffer.cc.o
-
-Buffer.i: Buffer.cc.i
-
-.PHONY : Buffer.i
-
-# target to preprocess a source file
-Buffer.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Buffer.cc.i
-.PHONY : Buffer.cc.i
-
-Buffer.s: Buffer.cc.s
-
-.PHONY : Buffer.s
-
-# target to generate assembly for a file
-Buffer.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Buffer.cc.s
-.PHONY : Buffer.cc.s
-
-Channel.o: Channel.cc.o
-
-.PHONY : Channel.o
-
-# target to build an object file
-Channel.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Channel.cc.o
-.PHONY : Channel.cc.o
-
-Channel.i: Channel.cc.i
-
-.PHONY : Channel.i
-
-# target to preprocess a source file
-Channel.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Channel.cc.i
-.PHONY : Channel.cc.i
-
-Channel.s: Channel.cc.s
-
-.PHONY : Channel.s
-
-# target to generate assembly for a file
-Channel.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Channel.cc.s
-.PHONY : Channel.cc.s
-
-CurrentThread.o: CurrentThread.cc.o
-
-.PHONY : CurrentThread.o
-
-# target to build an object file
-CurrentThread.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/CurrentThread.cc.o
-.PHONY : CurrentThread.cc.o
-
-CurrentThread.i: CurrentThread.cc.i
-
-.PHONY : CurrentThread.i
-
-# target to preprocess a source file
-CurrentThread.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/CurrentThread.cc.i
-.PHONY : CurrentThread.cc.i
-
-CurrentThread.s: CurrentThread.cc.s
-
-.PHONY : CurrentThread.s
-
-# target to generate assembly for a file
-CurrentThread.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/CurrentThread.cc.s
-.PHONY : CurrentThread.cc.s
-
-DefaultPoller.o: DefaultPoller.cc.o
-
-.PHONY : DefaultPoller.o
-
-# target to build an object file
-DefaultPoller.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/DefaultPoller.cc.o
-.PHONY : DefaultPoller.cc.o
-
-DefaultPoller.i: DefaultPoller.cc.i
-
-.PHONY : DefaultPoller.i
-
-# target to preprocess a source file
-DefaultPoller.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/DefaultPoller.cc.i
-.PHONY : DefaultPoller.cc.i
-
-DefaultPoller.s: DefaultPoller.cc.s
-
-.PHONY : DefaultPoller.s
-
-# target to generate assembly for a file
-DefaultPoller.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/DefaultPoller.cc.s
-.PHONY : DefaultPoller.cc.s
-
-EPollPoller.o: EPollPoller.cc.o
-
-.PHONY : EPollPoller.o
-
-# target to build an object file
-EPollPoller.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EPollPoller.cc.o
-.PHONY : EPollPoller.cc.o
-
-EPollPoller.i: EPollPoller.cc.i
-
-.PHONY : EPollPoller.i
-
-# target to preprocess a source file
-EPollPoller.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EPollPoller.cc.i
-.PHONY : EPollPoller.cc.i
-
-EPollPoller.s: EPollPoller.cc.s
-
-.PHONY : EPollPoller.s
-
-# target to generate assembly for a file
-EPollPoller.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EPollPoller.cc.s
-.PHONY : EPollPoller.cc.s
-
-EventLoop.o: EventLoop.cc.o
-
-.PHONY : EventLoop.o
-
-# target to build an object file
-EventLoop.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoop.cc.o
-.PHONY : EventLoop.cc.o
-
-EventLoop.i: EventLoop.cc.i
-
-.PHONY : EventLoop.i
-
-# target to preprocess a source file
-EventLoop.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoop.cc.i
-.PHONY : EventLoop.cc.i
-
-EventLoop.s: EventLoop.cc.s
-
-.PHONY : EventLoop.s
-
-# target to generate assembly for a file
-EventLoop.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoop.cc.s
-.PHONY : EventLoop.cc.s
-
-EventLoopThread.o: EventLoopThread.cc.o
-
-.PHONY : EventLoopThread.o
-
-# target to build an object file
-EventLoopThread.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoopThread.cc.o
-.PHONY : EventLoopThread.cc.o
-
-EventLoopThread.i: EventLoopThread.cc.i
-
-.PHONY : EventLoopThread.i
-
-# target to preprocess a source file
-EventLoopThread.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoopThread.cc.i
-.PHONY : EventLoopThread.cc.i
-
-EventLoopThread.s: EventLoopThread.cc.s
-
-.PHONY : EventLoopThread.s
-
-# target to generate assembly for a file
-EventLoopThread.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoopThread.cc.s
-.PHONY : EventLoopThread.cc.s
-
-EventLoopThreadPool.o: EventLoopThreadPool.cc.o
-
-.PHONY : EventLoopThreadPool.o
-
-# target to build an object file
-EventLoopThreadPool.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoopThreadPool.cc.o
-.PHONY : EventLoopThreadPool.cc.o
-
-EventLoopThreadPool.i: EventLoopThreadPool.cc.i
-
-.PHONY : EventLoopThreadPool.i
-
-# target to preprocess a source file
-EventLoopThreadPool.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoopThreadPool.cc.i
-.PHONY : EventLoopThreadPool.cc.i
-
-EventLoopThreadPool.s: EventLoopThreadPool.cc.s
-
-.PHONY : EventLoopThreadPool.s
-
-# target to generate assembly for a file
-EventLoopThreadPool.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/EventLoopThreadPool.cc.s
-.PHONY : EventLoopThreadPool.cc.s
-
-InetAddress.o: InetAddress.cc.o
-
-.PHONY : InetAddress.o
-
-# target to build an object file
-InetAddress.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/InetAddress.cc.o
-.PHONY : InetAddress.cc.o
-
-InetAddress.i: InetAddress.cc.i
-
-.PHONY : InetAddress.i
-
-# target to preprocess a source file
-InetAddress.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/InetAddress.cc.i
-.PHONY : InetAddress.cc.i
-
-InetAddress.s: InetAddress.cc.s
-
-.PHONY : InetAddress.s
-
-# target to generate assembly for a file
-InetAddress.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/InetAddress.cc.s
-.PHONY : InetAddress.cc.s
-
-Logger.o: Logger.cc.o
-
-.PHONY : Logger.o
-
-# target to build an object file
-Logger.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Logger.cc.o
-.PHONY : Logger.cc.o
-
-Logger.i: Logger.cc.i
-
-.PHONY : Logger.i
-
-# target to preprocess a source file
-Logger.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Logger.cc.i
-.PHONY : Logger.cc.i
-
-Logger.s: Logger.cc.s
-
-.PHONY : Logger.s
-
-# target to generate assembly for a file
-Logger.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Logger.cc.s
-.PHONY : Logger.cc.s
-
-Poller.o: Poller.cc.o
-
-.PHONY : Poller.o
-
-# target to build an object file
-Poller.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Poller.cc.o
-.PHONY : Poller.cc.o
-
-Poller.i: Poller.cc.i
-
-.PHONY : Poller.i
-
-# target to preprocess a source file
-Poller.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Poller.cc.i
-.PHONY : Poller.cc.i
-
-Poller.s: Poller.cc.s
-
-.PHONY : Poller.s
-
-# target to generate assembly for a file
-Poller.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Poller.cc.s
-.PHONY : Poller.cc.s
-
-Socket.o: Socket.cc.o
-
-.PHONY : Socket.o
-
-# target to build an object file
-Socket.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Socket.cc.o
-.PHONY : Socket.cc.o
-
-Socket.i: Socket.cc.i
-
-.PHONY : Socket.i
-
-# target to preprocess a source file
-Socket.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Socket.cc.i
-.PHONY : Socket.cc.i
-
-Socket.s: Socket.cc.s
-
-.PHONY : Socket.s
-
-# target to generate assembly for a file
-Socket.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Socket.cc.s
-.PHONY : Socket.cc.s
-
-TcpConnection.o: TcpConnection.cc.o
-
-.PHONY : TcpConnection.o
-
-# target to build an object file
-TcpConnection.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpConnection.cc.o
-.PHONY : TcpConnection.cc.o
-
-TcpConnection.i: TcpConnection.cc.i
-
-.PHONY : TcpConnection.i
-
-# target to preprocess a source file
-TcpConnection.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpConnection.cc.i
-.PHONY : TcpConnection.cc.i
-
-TcpConnection.s: TcpConnection.cc.s
-
-.PHONY : TcpConnection.s
-
-# target to generate assembly for a file
-TcpConnection.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpConnection.cc.s
-.PHONY : TcpConnection.cc.s
-
-TcpServer.o: TcpServer.cc.o
-
-.PHONY : TcpServer.o
-
-# target to build an object file
-TcpServer.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpServer.cc.o
-.PHONY : TcpServer.cc.o
-
-TcpServer.i: TcpServer.cc.i
-
-.PHONY : TcpServer.i
-
-# target to preprocess a source file
-TcpServer.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpServer.cc.i
-.PHONY : TcpServer.cc.i
-
-TcpServer.s: TcpServer.cc.s
-
-.PHONY : TcpServer.s
-
-# target to generate assembly for a file
-TcpServer.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpServer.cc.s
-.PHONY : TcpServer.cc.s
-
-Thread.o: Thread.cc.o
-
-.PHONY : Thread.o
-
-# target to build an object file
-Thread.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Thread.cc.o
-.PHONY : Thread.cc.o
-
-Thread.i: Thread.cc.i
-
-.PHONY : Thread.i
-
-# target to preprocess a source file
-Thread.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Thread.cc.i
-.PHONY : Thread.cc.i
-
-Thread.s: Thread.cc.s
-
-.PHONY : Thread.s
-
-# target to generate assembly for a file
-Thread.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Thread.cc.s
-.PHONY : Thread.cc.s
-
-Timestamp.o: Timestamp.cc.o
-
-.PHONY : Timestamp.o
-
-# target to build an object file
-Timestamp.cc.o:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Timestamp.cc.o
-.PHONY : Timestamp.cc.o
-
-Timestamp.i: Timestamp.cc.i
-
-.PHONY : Timestamp.i
-
-# target to preprocess a source file
-Timestamp.cc.i:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Timestamp.cc.i
-.PHONY : Timestamp.cc.i
-
-Timestamp.s: Timestamp.cc.s
-
-.PHONY : Timestamp.s
-
-# target to generate assembly for a file
-Timestamp.cc.s:
-	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Timestamp.cc.s
-.PHONY : Timestamp.cc.s
+mymuduo_base/fast:
+	$(MAKE) -f mymuduo/base/CMakeFiles/mymuduo_base.dir/build.make mymuduo/base/CMakeFiles/mymuduo_base.dir/build
+.PHONY : mymuduo_base/fast
+
+#=============================================================================
+# Target rules for targets named mymuduo_net
+
+# Build rule for target.
+mymuduo_net: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mymuduo_net
+.PHONY : mymuduo_net
+
+# fast build rule for target.
+mymuduo_net/fast:
+	$(MAKE) -f mymuduo/net/CMakeFiles/mymuduo_net.dir/build.make mymuduo/net/CMakeFiles/mymuduo_net.dir/build
+.PHONY : mymuduo_net/fast
 
 # Help Target
 help:
@@ -588,60 +188,14 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
-	@echo "... mymuduo"
+	@echo "... install/strip"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... list_install_components"
 	@echo "... edit_cache"
-	@echo "... Acceptor.o"
-	@echo "... Acceptor.i"
-	@echo "... Acceptor.s"
-	@echo "... Buffer.o"
-	@echo "... Buffer.i"
-	@echo "... Buffer.s"
-	@echo "... Channel.o"
-	@echo "... Channel.i"
-	@echo "... Channel.s"
-	@echo "... CurrentThread.o"
-	@echo "... CurrentThread.i"
-	@echo "... CurrentThread.s"
-	@echo "... DefaultPoller.o"
-	@echo "... DefaultPoller.i"
-	@echo "... DefaultPoller.s"
-	@echo "... EPollPoller.o"
-	@echo "... EPollPoller.i"
-	@echo "... EPollPoller.s"
-	@echo "... EventLoop.o"
-	@echo "... EventLoop.i"
-	@echo "... EventLoop.s"
-	@echo "... EventLoopThread.o"
-	@echo "... EventLoopThread.i"
-	@echo "... EventLoopThread.s"
-	@echo "... EventLoopThreadPool.o"
-	@echo "... EventLoopThreadPool.i"
-	@echo "... EventLoopThreadPool.s"
-	@echo "... InetAddress.o"
-	@echo "... InetAddress.i"
-	@echo "... InetAddress.s"
-	@echo "... Logger.o"
-	@echo "... Logger.i"
-	@echo "... Logger.s"
-	@echo "... Poller.o"
-	@echo "... Poller.i"
-	@echo "... Poller.s"
-	@echo "... Socket.o"
-	@echo "... Socket.i"
-	@echo "... Socket.s"
-	@echo "... TcpConnection.o"
-	@echo "... TcpConnection.i"
-	@echo "... TcpConnection.s"
-	@echo "... TcpServer.o"
-	@echo "... TcpServer.i"
-	@echo "... TcpServer.s"
-	@echo "... Thread.o"
-	@echo "... Thread.i"
-	@echo "... Thread.s"
-	@echo "... Timestamp.o"
-	@echo "... Timestamp.i"
-	@echo "... Timestamp.s"
+	@echo "... rebuild_cache"
+	@echo "... mymuduo_base"
+	@echo "... mymuduo_net"
 .PHONY : help
 
 

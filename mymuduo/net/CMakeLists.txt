@@ -2,20 +2,24 @@ set(net_SRCS
   Acceptor.cc
   Buffer.cc
   Channel.cc
-  Connector.cc
   EventLoop.cc
   EventLoopThread.cc
   EventLoopThreadPool.cc
   InetAddress.cc
-  Poller.cc
   poller/DefaultPoller.cc
   poller/EPollPoller.cc
-  poller/PollPoller.cc
+  poller/Poller.cc
   Socket.cc
-  SocketsOps.cc
-  TcpClient.cc
   TcpConnection.cc
   TcpServer.cc
-  Timer.cc
-  TimerQueue.cc
   )
+
+include_directories(${PROJECT_SOURCE_DIR}/mymuduo/base)
+include_directories(${PROJECT_SOURCE_DIR}/mymuduo/net)
+include_directories(${PROJECT_SOURCE_DIR}/mymuduo/net/poller)
+
+add_library(mymuduo_net SHARED ${net_SRCS})
+target_link_libraries(mymuduo_net mymuduo_base)
+
+# 将 mymuduo_net 安装到 /user/lib 当中
+install(TARGETS mymuduo_net DESTINATION lib)

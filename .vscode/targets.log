@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug  1 23:18:17 2022
+# Make data base, printed on Wed Aug 10 15:47:53 2022
 
 # Variables
 
@@ -33,9 +33,11 @@ CURDIR := /home/shang/code/C++/github/my-muduo
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1d735750dbb1b9066c7513078396ba0f.zh-cn","_translationsConfigFile":"/root/.vscode-server/data/clp/1d735750dbb1b9066c7513078396ba0f.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1d735750dbb1b9066c7513078396ba0f.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1d735750dbb1b9066c7513078396ba0f.zh-cn/3b889b090b5ad5793f524b5d1d39fda662b96a2a","_corruptedFile":"/root/.vscode-server/data/clp/1d735750dbb1b9066c7513078396ba0f.zh-cn/corrupted.info","_languagePackSupport":true}
+JRE_HOME = /usr/local/jdk1.8/jre
 # environment
-_ = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/node
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"e1243840abbb4e31a890d397033a9abf.zh-cn","_translationsConfigFile":"/root/.vscode-server/data/clp/e1243840abbb4e31a890d397033a9abf.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/e1243840abbb4e31a890d397033a9abf.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/e1243840abbb4e31a890d397033a9abf.zh-cn/da76f93349a72022ca4670c1b84860304616aaa2","_corruptedFile":"/root/.vscode-server/data/clp/e1243840abbb4e31a890d397033a9abf.zh-cn/corrupted.info","_languagePackSupport":true}
+# environment
+_ = /root/.vscode-server/bin/da76f93349a72022ca4670c1b84860304616aaa2/node
 # makefile
 MAKEFILE_LIST := 
 # 'override' directive
@@ -49,9 +51,9 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /root
 # environment
-SSH_CONNECTION = 123.98.26.67 6760 172.19.38.237 22
+SSH_CONNECTION = 119.123.69.58 47487 172.19.38.237 22
 # environment
-PATH = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin
+PATH = /root/.vscode-server/bin/da76f93349a72022ca4670c1b84860304616aaa2/bin/remote-cli:.:/usr/local/jdk1.8/bin:.:/usr/local/jdk1.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin
 # environment
 XDG_RUNTIME_DIR = /run/user/0
 # environment
@@ -67,7 +69,7 @@ LS_COLORS =
 # environment
 PWD = /home/shang/code/C++/github/my-muduo
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/0/vscode-ipc-cbe49e0c-1166-4090-a5ef-cc4760d9244e.sock
+VSCODE_IPC_HOOK_CLI = /run/user/0/vscode-ipc-73878b1d-6df7-4c66-9a97-53b8215de090.sock
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -95,13 +97,17 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 3
 # environment
-XDG_SESSION_ID = 51
+JAVA_HOME = /usr/local/jdk1.8
+# environment
+XDG_SESSION_ID = 6
 # environment
 USER = root
 # makefile
 .DEFAULT_GOAL := 
 # environment
 GOROOT = /usr/local/go
+# environment
+CLASSPATH = .:/usr/local/jdk1.8/lib:/usr/local/jdk1.8/jre/lib
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
@@ -115,13 +121,13 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 123.98.26.67 6760 22
+SSH_CLIENT = 119.123.69.58 47487 22
 # environment
 MAIL = /var/mail/root
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
-BROWSER = /root/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/helpers/browser.sh
+BROWSER = /root/.vscode-server/bin/da76f93349a72022ca4670c1b84860304616aaa2/bin/helpers/browser.sh
 # environment
 S_COLORS = auto
 # environment
@@ -145,7 +151,7 @@ MAKE_HOST := x86_64-pc-linux-gnu
 # environment
 LANG = C
 # variable set hash-table stats:
-# Load=66/1024=6%, Rehash=0, Collisions=8/88=9%
+# Load=69/1024=7%, Rehash=0, Collisions=8/91=9%
 
 # Pattern-specific Variable Values
 
@@ -153,9 +159,9 @@ LANG = C
 
 # Directories
 
-# . (device 64513, inode 1835207): 48 files, no impossibilities.
+# . (device 64513, inode 1835207): 14 files, no impossibilities.
 
-# 48 files, no impossibilities in 1 directories.
+# 14 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -205,12 +211,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 56 / storage = 637 B / avg = 11 B
-# current buf: size = 8162 B / used = 637 B / count = 56 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 22 / storage = 181 B / avg = 8 B
+# current buf: size = 8162 B / used = 181 B / count = 22 / avg = 8 B
 
-# strcache performance: lookups = 59 / hit rate = 5%
+# strcache performance: lookups = 25 / hit rate = 12%
 # hash-table stats:
-# Load=56/8192=1%, Rehash=0, Collisions=1/59=2%
-# Finished Make data base on Mon Aug  1 23:18:17 2022
+# Load=22/8192=0%, Rehash=0, Collisions=1/25=4%
+# Finished Make data base on Wed Aug 10 15:47:53 2022
 
  
