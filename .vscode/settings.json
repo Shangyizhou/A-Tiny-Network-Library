@@ -51,7 +51,8 @@
         "cstring": "cpp",
         "list": "cpp",
         "typeindex": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "set": "cpp"
     },
     "cmake.configureOnOpen": true
 }

@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Aug 10 15:47:53 2022
+# Make data base, printed on Sat Aug 27 11:38:05 2022
 
 # Variables
 
@@ -35,9 +35,9 @@ SHELL = /bin/sh
 # environment
 JRE_HOME = /usr/local/jdk1.8/jre
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"e1243840abbb4e31a890d397033a9abf.zh-cn","_translationsConfigFile":"/root/.vscode-server/data/clp/e1243840abbb4e31a890d397033a9abf.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/e1243840abbb4e31a890d397033a9abf.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/e1243840abbb4e31a890d397033a9abf.zh-cn/da76f93349a72022ca4670c1b84860304616aaa2","_corruptedFile":"/root/.vscode-server/data/clp/e1243840abbb4e31a890d397033a9abf.zh-cn/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"cc0490d1397af23dc5bf44a96fe15dbb.zh-cn","_translationsConfigFile":"/root/.vscode-server/data/clp/cc0490d1397af23dc5bf44a96fe15dbb.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/cc0490d1397af23dc5bf44a96fe15dbb.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/cc0490d1397af23dc5bf44a96fe15dbb.zh-cn/e4503b30fc78200f846c62cf8091b76ff5547662","_corruptedFile":"/root/.vscode-server/data/clp/cc0490d1397af23dc5bf44a96fe15dbb.zh-cn/corrupted.info","_languagePackSupport":true}
 # environment
-_ = /root/.vscode-server/bin/da76f93349a72022ca4670c1b84860304616aaa2/node
+_ = /root/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/node
 # makefile
 MAKEFILE_LIST := 
 # 'override' directive
@@ -51,9 +51,9 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /root
 # environment
-SSH_CONNECTION = 119.123.69.58 47487 172.19.38.237 22
+SSH_CONNECTION = 36.36.88.240 7410 172.19.38.237 22
 # environment
-PATH = /root/.vscode-server/bin/da76f93349a72022ca4670c1b84860304616aaa2/bin/remote-cli:.:/usr/local/jdk1.8/bin:.:/usr/local/jdk1.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin
+PATH = /root/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/bin/remote-cli:.:/usr/local/jdk1.8/bin:.:/usr/local/jdk1.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin
 # environment
 XDG_RUNTIME_DIR = /run/user/0
 # environment
@@ -69,7 +69,7 @@ LS_COLORS =
 # environment
 PWD = /home/shang/code/C++/github/my-muduo
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/0/vscode-ipc-73878b1d-6df7-4c66-9a97-53b8215de090.sock
+VSCODE_IPC_HOOK_CLI = /run/user/0/vscode-ipc-3677b094-b98c-4685-a971-6c44fc4e68e6.sock
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -99,7 +99,7 @@ SHLVL = 3
 # environment
 JAVA_HOME = /usr/local/jdk1.8
 # environment
-XDG_SESSION_ID = 6
+XDG_SESSION_ID = 1730
 # environment
 USER = root
 # makefile
@@ -121,13 +121,13 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 119.123.69.58 47487 22
+SSH_CLIENT = 36.36.88.240 7410 22
 # environment
 MAIL = /var/mail/root
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
-BROWSER = /root/.vscode-server/bin/da76f93349a72022ca4670c1b84860304616aaa2/bin/helpers/browser.sh
+BROWSER = /root/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/bin/helpers/browser.sh
 # environment
 S_COLORS = auto
 # environment
@@ -159,9 +159,9 @@ LANG = C
 
 # Directories
 
-# . (device 64513, inode 1835207): 14 files, no impossibilities.
+# . (device 64513, inode 1835207): 15 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -211,12 +211,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 22 / storage = 181 B / avg = 8 B
-# current buf: size = 8162 B / used = 181 B / count = 22 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 23 / storage = 188 B / avg = 8 B
+# current buf: size = 8162 B / used = 188 B / count = 23 / avg = 8 B
 
-# strcache performance: lookups = 25 / hit rate = 12%
+# strcache performance: lookups = 26 / hit rate = 11%
 # hash-table stats:
-# Load=22/8192=0%, Rehash=0, Collisions=1/25=4%
-# Finished Make data base on Wed Aug 10 15:47:53 2022
+# Load=23/8192=0%, Rehash=0, Collisions=1/26=4%
+# Finished Make data base on Sat Aug 27 11:38:05 2022
 
  

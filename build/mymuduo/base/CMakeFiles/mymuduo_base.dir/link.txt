@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -g -Wall -std=c++11  -shared -Wl,-soname,libmymuduo_base.so -o ../../../lib/libmymuduo_base.so CMakeFiles/mymuduo_base.dir/Logger.cc.o CMakeFiles/mymuduo_base.dir/CurrentThread.cc.o CMakeFiles/mymuduo_base.dir/Thread.cc.o CMakeFiles/mymuduo_base.dir/Timestamp.cc.o -lpthread 
