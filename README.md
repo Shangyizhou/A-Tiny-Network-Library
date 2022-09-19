@@ -35,13 +35,13 @@ sudo apt-get install cmake
 下载项目
 
 ```shell
-git clone 
+git clone git@github.com:Shangyizhou/tiny-network.git
 ```
 
 执行脚本构建项目
 
 ```shell
-bash build.sh
+cd ./tiny-network && bash build.sh
 ```
 
 ## Running Examples
@@ -49,7 +49,7 @@ bash build.sh
 这里以一个简单的回声服务器作为案例，`EchoServer`默认监听端口为`8080`。
 
 ```shell
-cd /example && ./EchoServer
+cd ./example && ./EchoServer
 ```
 
 执行情况：
@@ -59,7 +59,7 @@ cd /example && ./EchoServer
 `http`模块有一个小型的`HTTP`服务器案例，也可以执行。其默认监听`8080`：
 
 ```shell
-./HttpServer
+cd ./src/http && ./HttpServer
 ```
 
 ![img](https://cdn.nlark.com/yuque/0/2022/png/26752078/1663577836134-85f389cc-a3ac-4b55-8bb8-05d751633e39.png)
