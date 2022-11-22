@@ -37,15 +37,15 @@ bool HttpContext::processRequestLine(const char *begin, const char *end)
             {
                 if (*(end-1) == '1')
                 {
-                  request_.setVersion(HttpRequest::kHttp11);
+                    request_.setVersion(HttpRequest::kHttp11);
                 }
                 else if (*(end-1) == '0')
                 {
-                  request_.setVersion(HttpRequest::kHttp10);
+                    request_.setVersion(HttpRequest::kHttp10);
                 }
                 else
                 {
-                  succeed = false;
+                    succeed = false;
                 }
             }
         }

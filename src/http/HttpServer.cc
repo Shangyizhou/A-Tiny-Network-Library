@@ -38,10 +38,13 @@ void HttpServer::start()
 
 void HttpServer::onConnection(const TcpConnectionPtr& conn)
 {
-    LOG_INFO << "HttpServer::onConnection";
     if (conn->connected())
     {
         LOG_INFO << "new Connection arrived";
+    }
+    else 
+    {
+        LOG_INFO << "Connection closed";
     }
 }
 
@@ -50,12 +53,14 @@ void HttpServer::onMessage(const TcpConnectionPtr& conn,
                            Buffer* buf,
                            Timestamp receiveTime)
 {
-    LOG_INFO << "HttpServer::onMessage";
+    // LOG_INFO << "HttpServer::onMessage";
     std::unique_ptr<HttpContext> context(new HttpContext);
 
+#if 0
     // 打印请求报文
     std::string request = buf->GetBufferAllAsString();
     std::cout << request << std::endl;
+#endif
 
     // 进行状态机解析
     // 错误则发送 BAD REQUEST 半关闭

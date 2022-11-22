@@ -57,3 +57,6 @@ add_subdirectory(example)
 
 # 加载http
 add_subdirectory(src/http)
+
+# 加载base
+# add_subdirectory(src/base/test)

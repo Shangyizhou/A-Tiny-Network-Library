@@ -132,9 +132,9 @@ public:
 
     const char* findCRLF() const
     {
-      // FIXME: replace with memmem()?
-      const char* crlf = std::search(peek(), beginWrite(), kCRLF, kCRLF+2);
-      return crlf == beginWrite() ? NULL : crlf;
+        // FIXME: replace with memmem()?
+        const char* crlf = std::search(peek(), beginWrite(), kCRLF, kCRLF+2);
+        return crlf == beginWrite() ? NULL : crlf;
     }
 
     char* beginWrite()

@@ -52,7 +52,8 @@
         "list": "cpp",
         "typeindex": "cpp",
         "map": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "queue": "cpp"
     },
     "cmake.configureOnOpen": true
 }
