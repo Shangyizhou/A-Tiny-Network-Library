@@ -1,6 +1,8 @@
 # Tiny C++ Network Library
 
-https://img.shields.io/badge/build-passing-green https://img.shields.io/badge/license-MIT-green
+[](https://img.shields.io/badge/build-passing-green)
+
+https://img.shields.io/badge/license-MIT-green
 
 - [项目介绍](#heading-one)
 - [项目特点](#heading-two)
