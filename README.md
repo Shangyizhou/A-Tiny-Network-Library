@@ -1,8 +1,6 @@
 # Tiny C++ Network Library
 
-![build: passing (shields.io)](https://img.shields.io/badge/build-passing-green)
-
- ![license: MIT (shields.io)](https://img.shields.io/badge/license-MIT-green)
+![img](https://cdn.nlark.com/yuque/0/2022/svg/26752078/1670057431658-ae63a281-0f61-4187-a606-dce49a55311d.svg) ![img](https://cdn.nlark.com/yuque/0/2022/svg/26752078/1670057431768-d98c4ecc-9b6a-4534-9e45-1e1400bf3b27.svg)
 
 | **Part Ⅰ**               | **Part Ⅱ**               | **Part Ⅲ**                 | **Part Ⅳ**                | **Part Ⅴ**                | **Part Ⅵ**               |
 | ------------------------ | ------------------------ | -------------------------- | ------------------------- | ------------------------- | ------------------------ |
