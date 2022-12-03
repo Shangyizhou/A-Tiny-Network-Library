@@ -1,9 +1,9 @@
-# muduo是怎么实现I/O复用的
-我们编写网络编程代码的时候少不了使用IO复用系列函数，而muduo也为我们提供了对此的封装。muduo 有 Poller 和 EPollPoller类分别对应着`epoll`和`poll`。
+# 基类Poller的设计
+
+我们编写网络编程代码的时候少不了使用IO复用系列函数，而muduo也为我们提供了对此的封装。muduo 有 Poller 和 EPollPoller 类分别对应着`epoll`和`poll`。
 
 而我们使用的接口是`Poller`，muduo 以Poller 为虚基类，派生出 Poller 和 EPollPoller 两个子类，用不同的形式实现 IO 复用。
 
-# 基类Poller的设计
 ```cpp
 class Poller : noncopyable
 {
