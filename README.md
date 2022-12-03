@@ -1,36 +1,26 @@
 # Tiny C++ Network Library
 
-![build: passing (shields.io)](https://img.shields.io/badge/build-passing-green)![license: MIT (shields.io)](https://img.shields.io/badge/license-MIT-green)
+![build: passing (shields.io)](https://img.shields.io/badge/build-passing-green) ![license: MIT (shields.io)](https://img.shields.io/badge/license-MIT-green)
 
-[项目介绍](#heading-one)
-
-[项目特点](#heading-two)
-
-[开发环境](#heading-three)
-
-[构建项目](#heading-four)
-
-[运行案例](#heading-five)
-
-[模块讲解](#heading-six)
+| **Part Ⅰ**               | **Part Ⅱ**               | **Part Ⅲ**                 | **Part Ⅳ**                | **Part Ⅴ**                | **Part Ⅵ**               |
+| ------------------------ | ------------------------ | -------------------------- | ------------------------- | ------------------------- | ------------------------ |
+| [项目介绍](#heading-one) | [项目特点](#heading-two) | [开发环境](#heading-three) | [构建项目](#heading-four) | [运行案例](#heading-five) | [模块讲解](#heading-six) |
 
 ## 项目介绍
 
-
-
-本项目是参考 muduo 实现的基于 Reactor 模型的多线程网络库。使用 C++ 11 编写，内部拥有一个小型的 HTTP 服务器案例，可支持GET请求和静态资源的访问并能处理超时连接。内部附有异步日志实现，监控服务端情况。
+本项目是参考 muduo 实现的基于 Reactor 模型的多线程网络库。使用 C++ 11 编写去除 muduo 对 boost 的依赖，内部实现了一个小型的 HTTP 服务器，可支持 GET 请求和静态资源的访问，且附有异步日志监控服务端情况。项目已经实现了 Channel 模块、Poller 模块、事件循环模块、HTTP 模块、定时器模块、异步日志模块、内存池模块、数据库连接池模块。
 
 ## 项目特点
 
 - 底层使用 Epoll + LT 模式的 I/O 复用模型，并且结合非阻塞 I/O  实现主从 Reactor 模型。
-- 采用「one loop per thread」线程模型，并向上封装线程池避免线程创建，销毁的性能开销。
-- 采用 eventfd 作为事件通知描述符，高效派发事件到其他线程执行异步任务。
-- 基于双缓冲区实现的异步日志，避免数据落盘时阻塞服务。
-- 基于红黑树的定时器管理队列，基于 Linux 的 timerfd 分派定时任务，高效管理定时任务。
+- 采用「one loop per thread」线程模型，并向上封装线程池避免线程创建和销毁带来的性能开销。
+- 采用 eventfd 作为事件通知描述符，方便高效派发事件到其他线程执行异步任务。
+- 基于自实现的双缓冲区实现异步日志，由后端线程负责定时向磁盘写入前端日志信息，避免数据落盘时阻塞网络服务。
+- 基于红黑树实现定时器管理结构，内部使用 Linux 的 timerfd 通知到期任务，高效管理定时任务。
 - 遵循 RALL 手法使用智能指针管理内存，减小内存泄露风险。
 - 利用有限状态机解析 HTTP 请求报文。
 - 参照 Nginx 实现了内存池模块，更好管理小块内存空间，减少内存碎片。
-- 数据库连接池动态管理连接数量，防止多余连接浪费性能。
+- 数据库连接池可以动态管理连接数量，及时生成或销毁连接，保证连接池性能。
 
 ## 开发环境
 
@@ -103,6 +93,12 @@ cd ./src/http && ./HttpServer
 [内存池模块](./项目讲解/内存池模块.md)
 
 [数据库连接池模块](./项目讲解/数据库连接池模块.md)
+
+# 优化计划
+
+1. 计划使用 std::chrono 实现底层时间戳
+2. 使用优先级队列管理定时器结构
+3. 覆盖更多的单元测试
 
 ## 感谢
 - 《Linux高性能服务器编程》
