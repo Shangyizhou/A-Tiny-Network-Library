@@ -1,21 +1,16 @@
-# Buffer 模块讲解
-
-## 为什么要有缓冲区的设计
-
+# 为什么要有缓冲区的设计
 TcpConnection 类负责处理一个新连接的事件，包括从客户端读取数据和向客户端写数据。但是在这之前，需要先设计好缓冲区。
 
 1. 非阻塞网络编程中应用层buffer是必须的：非阻塞IO的核心思想是避免阻塞在`read()`或`write()`或其他`I/O`系统调用上，这样可以最大限度复用`thread-of-control`，让一个线程能服务于多个`socket`连接。`I/O`线程只能阻塞在`IO-multiplexing`函数上，如`select()/poll()/epoll_wait()`。这样一来，应用层的缓冲是必须的，每个`TCP socket`都要有`inputBuffer`和`outputBuffer`。
 2. TcpConnection必须有output buffer：使程序在`write()`操作上不会产生阻塞，当`write()`操作后，操作系统一次性没有接受完时，网络库把剩余数据则放入`outputBuffer`中，然后注册`POLLOUT`事件，一旦`socket`变得可写，则立刻调用`write()`进行写入数据。——应用层`buffer`到操作系统`buffer`
 3. TcpConnection必须有input buffer：当发送方`send`数据后，接收方收到数据不一定是整个的数据，网络库在处理`socket`可读事件的时候，必须一次性把`socket`里的数据读完，否则会反复触发`POLLIN`事件，造成`busy-loop`。所以网路库为了应对数据不完整的情况，收到的数据先放到`inputBuffer`里。——操作系统`buffer`到应用层`buffer`。
-## Buffer缓冲区设计
-
+# Buffer缓冲区设计
 muduo 的 Buffer 类作为网络通信的缓冲区，像是 TcpConnection 就拥有 inputBuffer 和 outputBuffer 两个缓冲区成员。而缓冲区的设计特点：
 
 1. 其内部使用`std::vector<char>`保存数据，并提供许多访问方法。并且`std::vector`拥有扩容空间的操作，可以适应数据的不断添加。
 2. `std::vector<char>`内部分为三块，头部预留空间，可读空间，可写空间。内部使用索引标注每个空间的起始位置。每次往里面写入数据，就移动`writeIndex`；从里面读取数据，就移动`readIndex`。
 
-### Buffer基本成员
-
+## Buffer基本成员
 ![1663491010(1).png](https://cdn.nlark.com/yuque/0/2022/png/26752078/1663491023445-5cef6048-a343-43c3-a2e5-05f8d53d6a73.png#averageHue=%236b90a1&clientId=u6f718134-6646-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=290&id=LjDhv&margin=%5Bobject%20Object%5D&name=1663491010%281%29.png&originHeight=362&originWidth=595&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16428&status=done&style=none&taskId=ufbbe00b4-76b7-4e3b-8832-02d9e3da6f8&title=&width=476)
 ```cpp
 class Buffer : public muduo::copyable
@@ -60,14 +55,14 @@ private:
 	size_t writerIndex_; // 可写区域开始索引
 };
 ```
-### 读写数据时对Buffer的操作
-
+## 读写数据时对Buffer的操作
 ![42056ba58ecff7fc0b921f751a77dbf.png](https://cdn.nlark.com/yuque/0/2022/png/26752078/1663493611175-2d79f2ee-1282-47f3-a79d-ccb294aa8413.png#averageHue=%23cae3fd&clientId=u6f718134-6646-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=255&id=TcHF0&margin=%5Bobject%20Object%5D&name=42056ba58ecff7fc0b921f751a77dbf.png&originHeight=319&originWidth=921&originalType=binary&ratio=1&rotation=0&showTitle=false&size=17200&status=done&style=none&taskId=u223fc9a9-132c-4d13-b7fa-143d5b84337&title=&width=736.8)
+
 ![b28b5599095a2af065df34c25784786.png](https://cdn.nlark.com/yuque/0/2022/png/26752078/1663493615698-fc035ca5-b55a-4930-bc47-9e88909798ca.png#averageHue=%23cae4fe&clientId=u6f718134-6646-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=264&id=vrUwu&margin=%5Bobject%20Object%5D&name=b28b5599095a2af065df34c25784786.png&originHeight=330&originWidth=995&originalType=binary&ratio=1&rotation=0&showTitle=false&size=17963&status=done&style=none&taskId=uec3922b2-d9b9-49a5-88ef-6a57e4af1cc&title=&width=796)
+
 ![4153384dbba933245c1ab9fff69d3ed.png](https://cdn.nlark.com/yuque/0/2022/png/26752078/1663493619587-deb0d8c0-8cea-47e2-b2d5-68a0755c537e.png#averageHue=%23cae3fd&clientId=u6f718134-6646-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=294&id=of7ef&margin=%5Bobject%20Object%5D&name=4153384dbba933245c1ab9fff69d3ed.png&originHeight=367&originWidth=1037&originalType=binary&ratio=1&rotation=0&showTitle=false&size=17926&status=done&style=none&taskId=uab3d23a8-0dee-469b-ba53-c2b7725f854&title=&width=829.6)
 
-### 向Buffer写入数据：readFd
-
+## 向Buffer写入数据：readFd
 `ssize_t Buffer::readFd(int fd, int* savedErrno)`：表示从 fd 中读取数据到 buffer_ 中。对于 buffer 来说这是写入数据的操作，会改变`writeIndex`。
 
 1. 考虑到 buffer_ 的 writableBytes 空间大小，不能够一次性读完数据，于是内部还在栈上创建了一个临时缓冲区 `char extrabuf[65536];`。如果有多余的数据，就将其读入到临时缓冲区中。
@@ -135,17 +130,19 @@ void append(const char* /*restrict*/ data, size_t len)
 	hasWritten(len);
 }
 ```
-### 空间不够怎么办？
-
+## 空间不够怎么办？
 如果写入空间不够，Buffer 内部会有两个方案来应付
 
 1. 将数据往前移动：因为每次读取数据，`readIndex`索引都会往后移动，从而导致前面预留的空间逐渐增大。我们需要将后面的元素重新移动到前面。
 2. 如果第一种方案的空间仍然不够，那么我们就直接对 buffer_ 进行扩容（`buffer_.resize(len)`）操作。
 
 **如图所示：现在的写入空间不够，但是前面的预留空间加上现在的写空间是足够的。因此，我们需要将后面的数据拷贝到前面，腾出足够的写入空间。**
+
 ![652d05b2afe60d2c3939e1ea6fb64b6.png](https://cdn.nlark.com/yuque/0/2022/png/26752078/1663496328441-e7d2d445-82e5-4f08-9fc9-62621c0f0908.png#averageHue=%23c9e3fd&clientId=u6f718134-6646-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=285&id=u9f3cb530&margin=%5Bobject%20Object%5D&name=652d05b2afe60d2c3939e1ea6fb64b6.png&originHeight=356&originWidth=1028&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20451&status=done&style=none&taskId=u494bcbb0-913c-4cce-90e4-bc639a73b85&title=&width=822.4)
 ![797797d7067e41e1f3e1ff62c20b3a5.png](https://cdn.nlark.com/yuque/0/2022/png/26752078/1663496332935-5f064f9c-8c55-4ca1-8038-9d1f638de652.png#averageHue=%23c9e2fc&clientId=u6f718134-6646-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=269&id=u0113ae2d&margin=%5Bobject%20Object%5D&name=797797d7067e41e1f3e1ff62c20b3a5.png&originHeight=336&originWidth=1004&originalType=binary&ratio=1&rotation=0&showTitle=false&size=23098&status=done&style=none&taskId=u52056cdc-e550-4f14-af16-34f4e9473e7&title=&width=803.2)
+
 muduo 的代码实现：
+
 ```cpp
 // 保证写空间足够len，如果不够则扩容
 void ensureWritableBytes(size_t len)
@@ -185,8 +182,7 @@ void makeSpace(size_t len)
 	}
 }
 ```
-### 从Buffer中读取数据
-
+## 从Buffer中读取数据
 就如回声服务器的例子一样：
 ```cpp
 void EchoServer::onMessage(const muduo::net::TcpConnectionPtr& conn,
@@ -250,8 +246,7 @@ void retrieveAll()
 }
 
 ```
-## TcpConnection使用Buffer
-
+# TcpConnection使用Buffer
 TcpConnection 拥有 inputBuffer 和 outputBuffer 两个缓冲区成员。
 
 1. 当服务端接收客户端数据，EventLoop 返回活跃的 Channel，并调用对应的读事件处理函数，即 TcpConnection 调用 handleRead 方法从相应的 fd 中读取数据到 inputBuffer 中。在 Buffer 内部 inputBuffer 中的 writeIndex 向后移动。
@@ -259,7 +254,7 @@ TcpConnection 拥有 inputBuffer 和 outputBuffer 两个缓冲区成员。
 
 ![1663491937(1).png](https://cdn.nlark.com/yuque/0/2022/png/26752078/1663491940665-8107d2ec-afc4-4a24-bacc-c8e63fdb32ce.png#averageHue=%2394bdce&clientId=u6f718134-6646-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=590&id=uc28a2661&margin=%5Bobject%20Object%5D&name=1663491937%281%29.png&originHeight=737&originWidth=1194&originalType=binary&ratio=1&rotation=0&showTitle=false&size=64587&status=done&style=none&taskId=ud738a601-2f43-41a8-a5f7-1a524ec1f43&title=&width=955.2)
 
-### TcpConnection接收客户端数据（从客户端sock读取数据到inputBuffer）
+## TcpConnection接收客户端数据（从客户端sock读取数据到inputBuffer）
 
 1. 调用`inputBuffer_.readFd(channel_->fd(), &savedErrno);`将对端`fd`数据读取到`inputBuffer`中。
    1. 如果读取成功，调用「可读事件发生回调函数」
@@ -295,8 +290,7 @@ void TcpConnection::handleRead(Timestamp receiveTime)
     }
 }
 ```
-### TcpConnection向客户端发送数据（将ouputBuffer数据输出到socket中）
-
+## TcpConnection向客户端发送数据（将ouputBuffer数据输出到socket中）
 ```cpp
 // 此行代码的用意何在
 if (channel_->isWriting())
