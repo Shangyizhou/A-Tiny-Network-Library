@@ -27,6 +27,7 @@ public:
         }
     }
 
+    // 前端调用 append 写入日志
     void append(const char* logling, int len);
 
     void start()

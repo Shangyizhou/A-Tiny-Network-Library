@@ -52,11 +52,10 @@ public:
     { closeCallback_ = cb; }
     void setHighWaterMarkCallback(const HighWaterMarkCallback &cb, size_t highWaterMark)
     { highWaterMarkCallback_ = cb; highWaterMark_ = highWaterMark; }
-
-    // 连接建立
-    void connectEstablished();
-    // 连接销毁
-    void connectDestroyed();
+    
+    // TcpServer会调用
+    void connectEstablished(); // 连接建立
+    void connectDestroyed();   // 连接销毁
 
 private:
     enum StateE

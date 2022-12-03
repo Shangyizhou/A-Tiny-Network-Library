@@ -52,17 +52,20 @@ void AsyncLogging::append(const char* logline, int len)
 
 void AsyncLogging::threadFunc()
 {
+    // output有写入磁盘的接口
     LogFile output(basename_, rollSize_, false);
-    // 后端缓冲区，用于归还前端得缓冲区
+    // 后端缓冲区，用于归还前端得缓冲区，currentBuffer nextBuffer
     BufferPtr newBuffer1(new Buffer);
     BufferPtr newBuffer2(new Buffer);
     newBuffer1->bzero();
     newBuffer2->bzero();
+    // 缓冲区数组置为16个，用于和前端缓冲区数组进行交换
     BufferVector buffersToWrite;
     buffersToWrite.reserve(16);
     while (running_)
     {
         {
+            // 互斥锁保护，这样别的线程在这段时间就无法向前端Buffer数组写入数据
             std::unique_lock<std::mutex> lock(mutex_);
             if (buffers_.empty())
             {
@@ -82,6 +85,7 @@ void AsyncLogging::threadFunc()
             }
         }
 
+        // 遍历所有 buffer，将其写入文件
         for (const auto& buffer : buffersToWrite)
         {
             output.append(buffer->data(), buffer->length());
@@ -109,8 +113,8 @@ void AsyncLogging::threadFunc()
             newBuffer2->reset();
         }
 
-        buffersToWrite.clear();
-        output.flush();
+        buffersToWrite.clear(); // 清空后端缓冲区队列
+        output.flush(); //清空文件缓冲区
     }
     output.flush();
 }

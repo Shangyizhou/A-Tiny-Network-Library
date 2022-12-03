@@ -9,7 +9,7 @@ LogFile::LogFile(const std::string& basename,
       flushInterval_(flushInterval),
       checkEveryN_(checkEveryN),
       count_(0),
-      mutex_(),
+      mutex_(new std::mutex),
       startOfPeriod_(0),
       lastRoll_(0),
       lastFlush_(0)
@@ -57,23 +57,25 @@ void LogFile::appendInLock(const char* data, int len)
 
 void LogFile::flush()
 {
-    std::lock_guard<std::mutex> lock(*mutex_);
+    // std::lock_guard<std::mutex> lock(*mutex_);
     file_->flush();
 }
 
+// 滚动日志
+// basename + time + hostname + pid + ".log"
 bool LogFile::rollFile()
 {
     time_t now = 0;
     std::string filename = getLogFileName(basename_, &now);
-    // 
+    // 计算现在是第几天 now/kRollPerSeconds求出现在是第几天，再乘以秒数相当于是当前天数0点对应的秒数
     time_t start = now / kRollPerSeconds_ * kRollPerSeconds_;
 
-    // 
     if (now > lastRoll_)
     {
         lastRoll_ = now;
         lastFlush_ = now;
         startOfPeriod_ = start;
+        // 让file_指向一个名为filename的文件，相当于新建了一个文件
         file_.reset(new FileUtil(filename));
         return true;
     }
@@ -91,7 +93,7 @@ std::string LogFile::getLogFileName(const std::string& basename, time_t* now)
     *now = time(NULL);
     localtime_r(now, &tm);
     // 写入时间
-    strftime(timebuf, sizeof timebuf, ".%Y%m%d-%H%M%S.", &tm);
+    strftime(timebuf, sizeof timebuf, ".%Y%m%d-%H%M%S", &tm);
     filename += timebuf;
 
     filename += ".log";

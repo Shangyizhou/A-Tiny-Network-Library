@@ -41,6 +41,7 @@ void MemoryPool::destroyPool()
         if (large->address_ != nullptr)
         {
             free(large->address_);
+            large->address_ = nullptr;
         }
         large = large->next_;
     }
@@ -87,7 +88,7 @@ void* MemoryPool::mallocLargeNode(unsigned long size)
 
     // 没有找到空闲的large结构体，分配一个新的large
     // 比如第一次分配large的时候
-    largeNode = (LargeNode*)malloc(sizeof(LargeNode));
+    largeNode = (LargeNode*)this->malloc(sizeof(LargeNode));
     if (largeNode == nullptr)
     {
         free(addr); // 申请节点内存失败，需要释放之前申请的大内存

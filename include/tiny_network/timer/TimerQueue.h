@@ -24,8 +24,8 @@ public:
                   double interval);
     
 private:
-    using Entry = std::pair<Timestamp, Timer*>;
-    using TimerList = std::set<Entry>;
+    using Entry = std::pair<Timestamp, Timer*>; // 以时间戳作为键值获取定时器
+    using TimerList = std::set<Entry>;          // 底层使用红黑树管理，自动按照时间戳进行排序
 
     // 在本loop中添加定时器
     // 线程安全
@@ -46,13 +46,13 @@ private:
     // 插入定时器的内部方法
     bool insert(Timer* timer);
 
-    EventLoop* loop_; // 所属的EventLoop
-    const int timerfd_; // timerfd是Linux提供的定时器接口
-    Channel timerfdChannel_; // 封装timerfd_文件描述符
+    EventLoop* loop_;           // 所属的EventLoop
+    const int timerfd_;         // timerfd是Linux提供的定时器接口
+    Channel timerfdChannel_;    // 封装timerfd_文件描述符
     // Timer list sorted by expiration
-    TimerList timers_; // 定时器队列（内部实现是红黑树）
+    TimerList timers_;          // 定时器队列（内部实现是红黑树）
 
-    bool callingExpiredTimers_; // 正在获取超时定时器标志
+    bool callingExpiredTimers_; // 标明正在获取超时定时器
 };
 
 #endif // TIMER_QUEUE_H

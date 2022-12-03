@@ -82,7 +82,6 @@ private:
 
     int nextConnId_;            // 连接索引
     ConnectionMap connections_; // 保存所有的连接
-
 };
 
 #endif // TCP_SERVER_H

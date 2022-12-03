@@ -11,10 +11,10 @@ public:
     // HTTP请求状态
     enum HttpRequestParseState
     {
-      kExpectRequestLine, // 解析请求行状态
-      kExpectHeaders,     // 解析请求头部状态
-      kExpectBody,        // 解析请求体状态
-      kGotAll,            // 解析完毕状态
+        kExpectRequestLine, // 解析请求行状态
+        kExpectHeaders,     // 解析请求头部状态
+        kExpectBody,        // 解析请求体状态
+        kGotAll,            // 解析完毕状态
     };
 
     HttpContext()
@@ -26,7 +26,7 @@ public:
 
     bool gotAll() const { return state_ == kGotAll; }
 
-      // 重置HttpContext状态，异常安全
+    // 重置HttpContext状态，异常安全
     void reset()
     {
         state_ = kExpectRequestLine;
