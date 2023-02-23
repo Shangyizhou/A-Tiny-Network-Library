@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/memory/MemoryPool.h
+
+/home/shang/code/C++/github-project/student-work-project/my-muduo/src/memory/test/MemoryPoolTest.cc
+MemoryPool.h
+/home/shang/code/C++/github-project/student-work-project/my-muduo/src/memory/test/MemoryPool.h
+iostream
+-
+vector
+-
+chrono
+-
+stdio.h
+-
+stdlib.h
+-
+

@@ -32,6 +32,31 @@ void op2(ConnectionPool* pool, int begin, int end)
     }
 }
 
+// 非连接池查询
+void op3(int begin, int end)
+{
+    for (int i = begin; i < end; ++i)
+    {
+        MysqlConn conn;
+        conn.connect("root", "123456", "test", "127.0.0.1");
+        char sql[1024] = { 0 };
+        snprintf(sql, sizeof(sql), "select * from user");
+        conn.query(sql);
+    }
+}
+
+// 连接池查询
+void op4(ConnectionPool* pool, int begin, int end)
+{
+    for (int i = begin; i < end; ++i)
+    {
+        shared_ptr<MysqlConn> conn = pool->getConnection();
+        char sql[1024] = { 0 };
+        snprintf(sql, sizeof(sql), "select * from user");
+        conn->query(sql);
+    }
+}
+
 // 单线程
 void test1()
 {
@@ -60,7 +85,7 @@ void test1()
 void test2()
 {
 #if 0
-    // 非连接池, 多单线程, 用时: 15702495964 纳秒, 15702 毫秒
+    // 非连接池, 多线程, 用时: 15702495964 纳秒, 15702 毫秒
     MysqlConn conn;
     conn.connect("root", "123456", "test", "127.0.0.1");
     steady_clock::time_point begin = steady_clock::now();
@@ -80,7 +105,7 @@ void test2()
         << length.count() / 1000000 << " 毫秒" << endl;
 
 #else
-    // 连接池, 多单线程, 用时: 6076443405 纳秒, 6076 毫秒
+    // 连接池, 多线程, 用时: 6076443405 纳秒, 6076 毫秒
     ConnectionPool* pool = ConnectionPool::getConnectionPool();
     steady_clock::time_point begin = steady_clock::now();
     std::thread t1(op2, pool, 0, 1000);
@@ -99,6 +124,27 @@ void test2()
         << length.count() / 1000000 << " 毫秒" << endl;
 
 #endif
+}
+
+void test3()
+{
+    // 连接池, 多线程, 用时: 6076443405 纳秒, 6076 毫秒
+    ConnectionPool* pool = ConnectionPool::getConnectionPool();
+    steady_clock::time_point begin = steady_clock::now();
+    std::thread t1(op4, pool, 0, 1000);
+    std::thread t2(op4, pool, 1000, 2000);
+    std::thread t3(op4, pool, 2000, 3000);
+    std::thread t4(op4, pool, 3000, 4000);
+    std::thread t5(op4, pool, 4000, 5000);
+    t1.join();
+    t2.join();
+    t3.join();
+    t4.join();
+    t5.join();
+    steady_clock::time_point end = steady_clock::now();
+    auto length = end - begin;
+    cout << "连接池, 多单线程, 用时: " << length.count() << " 纳秒, "
+        << length.count() / 1000000 << " 毫秒" << endl;
 }
 
 // 查询测试
@@ -133,7 +179,7 @@ int main()
     // test1(); 
     
     // 测试在多线程环境下，使用连接池和不使用连接池性能差距
-    test2();  
+    test3();  
 
     return 0;
 }
